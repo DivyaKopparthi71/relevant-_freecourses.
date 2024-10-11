@@ -31,11 +31,13 @@ def search_courses(query, embeddings, df, vectorizer):
     # Return the top courses
     return df.iloc[top_indices]
 
-# CSS for a static background color
+# CSS for a background image
 st.markdown("""
 <style>
 body {
-    background-color: #e6f7ff; /* Light blue background */
+    background-image: url('https://example.com/your-image.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
 }
 </style>
 """, unsafe_allow_html=True)
