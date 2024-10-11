@@ -23,7 +23,11 @@ def search_courses(query, embeddings, df, vectorizer):
     query_embedding = vectorizer.transform([query])
     
     # Calculate cosine similarity between the query embedding and course embeddings
-    cosine_similarities = np.dot(embeddings, query_embedding.T).flatten()  # Use np.dot for cosine similarity
+    cosine_similarities = np.dot(embeddings, query_embedding.T).flatten()
+
+    # Check for valid cosine similarities
+    if not np.any(cosine_similarities):
+        return pd.DataFrame()  # Return empty DataFrame if no valid similarities
 
     # Get the indices of the top 5 most similar courses
     top_indices = np.argsort(cosine_similarities)[-5:][::-1]
