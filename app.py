@@ -22,13 +22,9 @@ def search_courses(query, embeddings, df, vectorizer):
     # Transform the user query to the same embedding space
     query_embedding = vectorizer.transform([query]).toarray()  # Convert to dense NumPy array
     
-    # Check the shape of the embeddings
-    print("Query embedding shape:", query_embedding.shape)
-    print("Embeddings shape:", embeddings.shape)
-    
     # Calculate cosine similarity between the query embedding and course embeddings
     cosine_similarities = np.dot(embeddings, query_embedding.T).flatten()
-
+    
     # Check for valid cosine similarities
     if not np.any(cosine_similarities):
         return pd.DataFrame()  # Return empty DataFrame if no valid similarities
@@ -49,12 +45,23 @@ st.markdown("""
         background-position: center;
     }
 
-    /* Optional: Adjust text color for better readability */
+    /* Change text color for the main body to white */
     .stApp * {
         color: #ffffff;
     }
 
-    /* Optional: Style the course link boxes */
+    /* Change the text color for the input box to black */
+    input[type='text'] {
+        color: black; /* Text color */
+        background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
+    }
+
+    /* Change the text color for the course results to black */
+    .stMarkdown {
+        color: black;
+    }
+
+    /* Style the course link boxes */
     .course-link {
         background-color: rgba(240, 240, 240, 0.8); /* Semi-transparent light gray */
         padding: 10px;
@@ -63,7 +70,7 @@ st.markdown("""
     }
     .course-link a {
         text-decoration: none;
-        color: #007bff;
+        color: #007bff; /* Link color */
     }
     </style>
     """, unsafe_allow_html=True)
