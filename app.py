@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Load the saved DataFrame and embeddings from the pickle file
 @st.cache_resource
 def load_data():
-    with open('course_finally_model(2).pkl', 'rb') as f:
+    with open('course_finally_model.pkl', 'rb') as f:
         data = pickle.load(f)
     
     # Extract data from the loaded dictionary
