@@ -31,6 +31,23 @@ def search_courses(query, embeddings, df, vectorizer):
     # Return the top courses
     return df.iloc[top_indices]
 
+# CSS for background animation
+st.markdown("""
+<style>
+body {
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Streamlit app layout
 st.title("Course Search Application")
 
@@ -51,7 +68,7 @@ if query:
             st.write(f"**Course Title:** {row['Course Title']}")
             st.write(f"**Course Description:** {row['Course Description']}")
             st.write(f"**Course Curriculum:** {row['Course Curriculum']}")
-            
+
             # Create a styled box for the course link
             st.markdown(
                 f"""
