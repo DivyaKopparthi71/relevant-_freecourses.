@@ -1,1 +1,1 @@
-# relevant_freecourses.
+# GenAI 
