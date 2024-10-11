@@ -51,5 +51,14 @@ if query:
             st.write(f"**Course Title:** {row['Course Title']}")
             st.write(f"**Course Description:** {row['Course Description']}")
             st.write(f"**Course Curriculum:** {row['Course Curriculum']}")
-            st.markdown(f"[Course Link]({row['Course URL']})")
+            
+            # Create a styled box for the course link
+            st.markdown(
+                f"""
+                <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; display: inline-block;">
+                    <a href="{row['Course URL']}" style="text-decoration: none; color: #007bff;">Course Link</a>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
             st.write("---")
