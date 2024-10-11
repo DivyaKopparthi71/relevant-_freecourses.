@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Load the saved DataFrame and embeddings from pickle files
 @st.cache_resource
@@ -10,7 +9,7 @@ def load_data():
     with open('free_course_data.pkl', 'rb') as f:
         df = pickle.load(f)
     
-    with open('course_embeddings.pkl', 'rb') as f:
+    with open('finally_embeddings.pkl', 'rb') as f:
         embeddings_data = pickle.load(f)
         vectorizer = embeddings_data['vectorizer']
         embeddings = embeddings_data['embeddings']
