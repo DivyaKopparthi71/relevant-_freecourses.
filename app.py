@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Load the saved DataFrame and embeddings from the pickle file
 @st.cache_resource
 def load_data():
-    with open('course_finally_model.pkl', 'rb') as f:
+    with open('course_finally_model(1).pkl', 'rb') as f:
         data = pickle.load(f)
     
     # Extract data from the loaded dictionary
@@ -20,7 +20,11 @@ def load_data():
 # Function to search courses based on a query
 def search_courses(query, embeddings, df, vectorizer):
     # Transform the user query to the same embedding space
-    query_embedding = vectorizer.transform([query])
+    query_embedding = vectorizer.transform([query]).A  # Convert to dense NumPy array
+    
+    # Check the shape of the embeddings
+    print("Query embedding shape:", query_embedding.shape)
+    print("Embeddings shape:", embeddings.shape)
     
     # Calculate cosine similarity between the query embedding and course embeddings
     cosine_similarities = np.dot(embeddings, query_embedding.T).flatten()
