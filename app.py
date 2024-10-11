@@ -33,41 +33,59 @@ def search_courses(query, embeddings, df, vectorizer):
 
 # CSS for double-shaded background color with linear gradient
 st.markdown("""
-<style>
-body {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Shades of red to orange gradient */
-    background-size: cover;
-    background-position: center;
-}
-</style>
-""", unsafe_allow_html=True)
+    <style>
+    /* Target the main Streamlit app container */
+    .stApp {
+        background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Shades of red to orange gradient */
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Optional: Adjust text color for better readability */
+    .stApp * {
+        color: #ffffff;
+    }
+
+    /* Optional: Style the course link boxes */
+    .course-link {
+        background-color: rgba(240, 240, 240, 0.8); /* Semi-transparent light gray */
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    .course-link a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # Streamlit app layout
-st.title("Course Search Application")
+st.title("🎓 Course Search Application")
 
 # Load data and embeddings
 df, vectorizer, embeddings = load_data()
 
 # Search bar for querying courses
-query = st.text_input("Enter course name or keyword")
+query = st.text_input("🔍 Enter course name or keyword")
 
 if query:
     results = search_courses(query, embeddings, df, vectorizer)
-    st.subheader("Search Results")
+    st.subheader("📚 Search Results")
 
     if results.empty:
-        st.write("No courses found.")
+        st.write("🚫 No courses found.")
     else:
         for index, row in results.iterrows():
-            st.write(f"**Course Title:** {row['Course Title']}")
-            st.write(f"**Course Description:** {row['Course Description']}")
-            st.write(f"**Course Curriculum:** {row['Course Curriculum']}")
+            st.markdown(f"**📌 Course Title:** {row['Course Title']}")
+            st.markdown(f"**📝 Course Description:** {row['Course Description']}")
+            st.markdown(f"**📄 Course Curriculum:** {row['Course Curriculum']}")
 
-            # Create a styled box for the course link
+            # Create a styled box for the course link using the CSS class
             st.markdown(
                 f"""
-                <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; display: inline-block;">
-                    <a href="{row['Course URL']}" style="text-decoration: none; color: #007bff;">Course Link</a>
+                <div class="course-link">
+                    <a href="{row['Course URL']}" target="_blank">🔗 Course Link</a>
                 </div>
                 """, 
                 unsafe_allow_html=True
