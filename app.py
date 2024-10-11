@@ -31,19 +31,11 @@ def search_courses(query, embeddings, df, vectorizer):
     # Return the top courses
     return df.iloc[top_indices]
 
-# CSS for background animation
+# CSS for a static background color
 st.markdown("""
 <style>
 body {
-    background: linear-gradient(270deg, #ff7e5f, #feb47b);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    background-color: #e6f7ff; /* Light blue background */
 }
 </style>
 """, unsafe_allow_html=True)
