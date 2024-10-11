@@ -31,11 +31,11 @@ def search_courses(query, embeddings, df, vectorizer):
     # Return the top courses
     return df.iloc[top_indices]
 
-# CSS for a background image
+# CSS for double-shaded background color with linear gradient
 st.markdown("""
 <style>
 body {
-    background-image: url('https://example.com/your-image.jpg'); /* Replace with your image URL */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Shades of red to orange gradient */
     background-size: cover;
     background-position: center;
 }
